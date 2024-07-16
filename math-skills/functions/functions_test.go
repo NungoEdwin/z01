@@ -1,4 +1,4 @@
-package main
+package functions
 
 import (
 	"testing"
@@ -11,6 +11,7 @@ func TestAverage(t *testing.T) {
 		t.Fatal("Wrong Average")
 	}
 }
+
 func TestMedian(t *testing.T) {
 	data := []int{10, 15, 5}
 	result := Median(data)
@@ -18,6 +19,7 @@ func TestMedian(t *testing.T) {
 		t.Fatal("wrong Median")
 	}
 }
+
 func TestVariance(t *testing.T) {
 	data := []int{10, 15, 5}
 	result := Variance(data)
@@ -25,6 +27,7 @@ func TestVariance(t *testing.T) {
 		t.Fatal("wrong Variance")
 	}
 }
+
 func TestStandardDeviation(t *testing.T) {
 	data := []int{10, 15, 5}
 	result := StandardDeviation(data)
