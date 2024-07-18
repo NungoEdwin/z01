@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	asciiart "asciiart/functionFiles"
 )
@@ -29,11 +30,19 @@ func main() {
 	}
 	// Determine the file path based on the number of command-line arguments and their values.
 	var filePath string
+	var flag string
 	if len(os.Args) == 2 {
 		filePath = "standard.txt"
 	}
 	if len(os.Args) == 3 {
-		flag := os.Args[2]
+		if strings.HasSuffix(os.Args[2], ".txt") {
+			slicepath := strings.Split(os.Args[2], ".")
+
+			flag = slicepath[0]
+		} else {
+			flag = os.Args[2]
+		}
+
 		if flag == "shadow" {
 			filePath = "shadow.txt"
 		} else if flag == "thinkertoy" {
@@ -41,16 +50,20 @@ func main() {
 		} else if flag == "standard" {
 			filePath = "standard.txt"
 		} else {
-
-			filePath = os.Args[2] + ".txt"
+			filePath = flag + ".txt"
 		}
 	}
+
 	// Read the ASCII art map from the specified file.
 	characterMap, err := asciiart.CreateMap(filePath)
 	if err != nil {
 		fmt.Println("Error reading map:", err)
 		return
 	}
-	
-		asciiart.DisplayAsciiArt(characterMap, input)
+	// Display ASCII art corresponding to the input string using the provided map
+	if len(characterMap) == 0 {
+		fmt.Println("File is empty")
+		return
+	}
+	asciiart.DisplayAsciiArt(characterMap, input)
 }
