@@ -1,1 +1,1 @@
-## This is a parent repoitory of projects I've done in zone01Kisumu adventure
+## This is a parent repository of projects I've done in zone01Kisumu adventure
