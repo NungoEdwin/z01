@@ -41,7 +41,7 @@ func InputArgs(osArgs []string) (string, string, int) {
 	})
 
 	if flagSet {
-		if len(flag.Args()) > 2 || len(flag.Args()) < 1 || !nameSet {
+		if len(flag.Args()) > 3 || len(flag.Args()) < 1 || !nameSet {
 			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
 			return "", "", 0
 		} else if len(flag.Args()) == 2 {
@@ -50,6 +50,9 @@ func InputArgs(osArgs []string) (string, string, int) {
 		} else if len(flag.Args()) == 1 {
 			match = flag.Arg(0)
 			args = flag.Arg(0)
+		} else if len(flag.Args()) == 3 {
+			match = flag.Arg(0)
+			args = flag.Arg(1)
 		}
 	} else {
 		// if len(os.Args) != 2 {
