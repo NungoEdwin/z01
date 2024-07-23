@@ -23,6 +23,9 @@ func FileChoice(osArgs []string) []string {
 			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
 			return []string{}
 		}
+	} else if len(os.Args) < 2 {
+		fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
+		return []string{}
 	}
 
 	file, err := os.ReadFile(banner)

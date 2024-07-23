@@ -7,14 +7,14 @@ import (
 )
 
 func main() {
-	input, match, inputLen := functions.InputArgs(os.Args)
-
-	if inputLen == 0 {
-		return
-	}
 
 	asciiFields := functions.FileChoice(os.Args)
 	if len(asciiFields) == 0 {
+		return
+	}
+	input, match, inputLen := functions.InputArgs(os.Args)
+
+	if inputLen == 0 {
 		return
 	}
 
