@@ -1,4 +1,4 @@
-# ASCII-ART-COLOR
+# ASCII-ART-OUTPUT
 
 ## Description
    This is a program built on the previously done [ascii-art](https://learn.zone01kisumu.ke/git/enungo/ascii-art.git) project. It uses a flag named 'color' that allows coloring of parts of the string passed that matches the substring passed. The program uses Go.
