@@ -7,42 +7,45 @@ import (
 	"strings"
 )
 
-// var args string
 // InputArgs function processes command-line arguments
 func InputArgs(osArgs []string) (string, string, int) {
-	var args string
-	var match string
-	color := flag.String("color", "\033[0m", "Provide color code to be used for coloring.")
+	var (
+		color  = flag.String("color", "\033[0m", "Provide color code to be used for coloring.")
+		output = flag.String("output", "banner.txt", "Provide the output file")
+	)
 
-	// if len(os.Args) > 2 && !strings.HasPrefix(os.Args[1], "--color="){
-	// 	fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
-	// 	return []string{}, "", 0
-	// }
+	var args string
+	var match string = ""
+	Nflags := 0
+	Nflags++
 
 	flag.Parse()
+	if strings.HasPrefix(*color, "--color") && strings.HasPrefix(*output, "--output") {
+		Nflags = 2
+	}
 
-	// Variable to track if the flag was set
-	var nameSet bool
+	if len(osArgs) > 6 || len(osArgs) < 2 {
+		fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+		os.Exit(0)
+	}
+
 	var flagSet bool = false
-	// Enforce the flag format to be used to be --output=<filename.txt>
+	flagset2 := false
+
 	flag.Visit(func(f *flag.Flag) {
 		if f.Name == "color" {
 			flagSet = true
-			result := strings.Replace(os.Args[1], *color, "", 1)
-			if !(result == "--color=") {
-				nameSet = false
-			} else {
-				nameSet = true
-			}
+		} else if f.Name == "output" {
+			flagset2 = true
 		} else {
-			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
+			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
 			return
 		}
 	})
-
-	if flagSet {
-		if len(flag.Args()) > 3 || len(flag.Args()) < 1 || !nameSet {
-			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
+	// color is set(flagSet) and output(!flagSet) is not set respectively
+	if flagSet && !flagset2 {
+		if len(flag.Args()) > 3 || len(flag.Args()) < 1 {
+			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> something")
 			return "", "", 0
 		} else if len(flag.Args()) == 2 {
 			match = flag.Arg(0)
@@ -54,26 +57,36 @@ func InputArgs(osArgs []string) (string, string, int) {
 			match = flag.Arg(0)
 			args = flag.Arg(1)
 		}
+	} else if !flagSet && flagset2 {
+		if len(flag.Args()) > 2 || len(flag.Args()) < 1 {
+			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+			return "", "", 0
+		} else if len(flag.Args()) == 2 {
+			args = flag.Arg(0)
+		} else if len(flag.Args()) == 1 {
+			args = flag.Arg(0)
+		}
+	} else if flag.NFlag() == 2 {
+		if len(flag.Args()) == 0 {
+			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+			return "", "", 0
+		}
+		if len(os.Args) == 4 {
+			args = flag.Arg(0)
+			match = flag.Arg(0)
+
+		} else {
+
+			args = flag.Arg(1)
+			match = flag.Arg(0)
+
+		}
 	} else {
-		// if len(os.Args) != 2 {
-		// 	 fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
-		// 	return []string{}, "", 0
-		// }
 		args = os.Args[1]
 	}
-	// var input []string
 
-	// args = strings.ReplaceAll(args, "\n", "\\n")
 	args = strings.ReplaceAll(args, "\\t", " ")
-	// input := strings.Split(args, "\\n")
-	// match = strings.ReplaceAll(match, "\\n", "\n")
-	// if input[0] == "" && len(input) == 1 {
-	// 	return "", "", 0
-	// } else if input[0] == "" && input[1] == "" && len(input) == 3 {
-	// 	fmt.Println()
-	// 	fmt.Println()
-	// 	return "", "", 0
-	// }
 
 	return args, match, len(osArgs)
 }
+

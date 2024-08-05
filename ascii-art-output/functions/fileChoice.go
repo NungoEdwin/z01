@@ -1,6 +1,7 @@
 package functions
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"strings"
@@ -10,19 +11,42 @@ import (
 func FileChoice(osArgs []string) []string {
 	banner := "standard.txt"
 
-	if len(os.Args) == 3 && !(strings.HasPrefix(os.Args[1], "--color")) {
-		banner = osArgs[2] + ".txt"
-	} else if len(os.Args) == 4 && strings.HasPrefix(os.Args[1], "--color") {
-		if os.Args[3] == "shadow" || os.Args[3] == "thinkertoy" || os.Args[3] == "standard" {
-			banner = os.Args[3] + ".txt"
+	if len(osArgs) > 6 || len(osArgs) < 2 {
+		fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+		os.Exit(0)
+	}
+
+	flag1 := false
+	flag2 := false
+	flag.Visit(func(f *flag.Flag) {
+		if f.Name == "output" {
+			flag1 = true
 		}
-	} else if len(os.Args) == 5 && strings.HasPrefix(os.Args[1], "--color") {
+		if f.Name == "color" {
+			flag2 = true
+		}
+	})
+
+	if len(os.Args) == 3 && flag.NFlag() == 0 {
+		banner = osArgs[2] + ".txt"
+	} else if len(os.Args) > 3 && flag.NFlag() == 0 {
+
+		fmt.Println("Usage: go run . [STRING] [BANNER]\n\nEX: go run . something standard")
+		return []string{}
+	} else if flag.NFlag() == 1 && flag1 && len(osArgs) == 4 {
+		banner = flag.Arg(1) + ".txt"
+	} else if len(os.Args) == 5 && flag2 && flag.NFlag() == 1 {
 		if os.Args[4] == "shadow" || os.Args[4] == "thinkertoy" || os.Args[4] == "standard" {
 			banner = os.Args[4] + ".txt"
 		} else {
 			fmt.Println("Usage: go run . [OPTION] [STRING]\n\nEX: go run . --color=<color> <substring to be colored> \"something\"")
 			return []string{}
 		}
+	} else if len(os.Args) < 2 {
+		fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+		return []string{}
+	} else if flag.NFlag() == 2 && len(osArgs) == 6 {
+		banner = os.Args[5] + ".txt"
 	}
 
 	file, err := os.ReadFile(banner)
@@ -42,3 +66,4 @@ func FileChoice(osArgs []string) []string {
 	}
 	return asciiFields
 }
+
