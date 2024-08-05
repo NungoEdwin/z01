@@ -9,6 +9,13 @@ import (
 
 // InputArgs function processes command-line arguments
 func InputArgs(osArgs []string) (string, string, int) {
+	/*//Alternative way using flag.StringVar
+	var color string
+	var output string
+	flag.StringVar(&color,"color"."\033[0m","Provide color code for coloring.")
+	flag.SringVar(&output,"output","banner.txt","Provide the output banner file")
+	flag.Parse()
+	*/
 	var (
 		color  = flag.String("color", "\033[0m", "Provide color code to be used for coloring.")
 		output = flag.String("output", "banner.txt", "Provide the output file")
@@ -89,4 +96,3 @@ func InputArgs(osArgs []string) (string, string, int) {
 
 	return args, match, len(osArgs)
 }
-
