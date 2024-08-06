@@ -20,7 +20,7 @@ cd ascii-art
 ```bash
 Usage: go run . [OPTION] [STRING]
 
-EX: go run . --color=<color> <substring to be colored> "something"
+EX: go run . --output=<banner.txt> <substring to be colored> "something"
 ```
 
 *  The substring to be colored can be a single letter or more.
