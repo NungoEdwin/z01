@@ -47,6 +47,10 @@ func FileChoice(osArgs []string) []string {
 		return []string{}
 	} else if flag.NFlag() == 2 && len(osArgs) == 6 {
 		banner = os.Args[5] + ".txt"
+		if !(banner == "standard.txt" || banner == "shadow.txt" || banner == "thinkertoy.txt") {
+			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\n\nEX: go run . --output=<fileName.txt> something standard")
+			return []string{}
+		}
 	}
 
 	file, err := os.ReadFile(banner)
@@ -66,4 +70,3 @@ func FileChoice(osArgs []string) []string {
 	}
 	return asciiFields
 }
-
