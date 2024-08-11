@@ -6,71 +6,59 @@ import (
 )
 
 // Prints the respective Ascii Art characters
-func PrintWords(input1 string, asciiFields []string, match string) {
-	input := strings.ReplaceAll(input1, "\\n", "\n")
-	match = strings.ReplaceAll(match, "\\n", "\n")
-
-	word := ""
+func PrintWords(input1 string, asciiFields []string, match string) string {
+	input2 := strings.ReplaceAll(input1, "\n", "\\n")
+	input := strings.Split(input2, "\\n")
+	big := ""
 	arr := make([]string, 8)
 
-	c := 0
-	matchs := 0
-	z := 0
-	for a, runz := range input {
-		if !(a == len(input)-1 && runz == '\n') {
-			word += string(runz)
-		}
-	}
+	for a, word := range input {
+		if word == "" && a != len(input)-1 {
 
-	for j, char := range word {
-
-		if char == '\n' {
-			if isSliceEmpty(arr) {
-				fmt.Println()
-				return
-			} else {
-				fmt.Println(strings.Join(arr, "\n"))
-				arr = make([]string, 8)
-			}
-
+			big += "\n"
+			continue
+		} else if word == "" && a == len(input)-1 {
 			continue
 		}
-		if !validChar(char) {
-			return
-		}
-		for i := 0; i < 8; i++ {
-			startPoint := Start(int(char))
-			matchs = strings.Index(word, match) + z
-
-			if j >= matchs && j < matchs+len(match) && matchs != -1 && strings.ContainsRune(match, char) && strings.Contains(word, match) {
-
-				arr[i] += (Color() + asciiFields[startPoint+i] + "\033[0m")
-				c++
-
-			} else if matchs == -1 {
-				arr[i] += (Color() + asciiFields[startPoint+i] + "\033[0m")
-			} else {
-				arr[i] += (asciiFields[startPoint+i])
+		c := 0
+		matchs := 0
+		z := 0
+		for j := 0; j < len(word); j++ {
+			char := rune(word[j])
+			for i := 0; i < 8; i++ {
+				if !validChar(char) {
+					return ""
+				}
+				startPoint := Start(int(rune(char)))
+				matchs = strings.Index(input[a], match) + z
+				if j >= matchs && j < matchs+len(match) && matchs != -1 && strings.ContainsRune(match, char) && strings.Contains(input[a], match) {
+					arr[i] += (Color() + asciiFields[startPoint+i] + "\033[0m")
+					c++
+				} else {
+					arr[i] += (asciiFields[startPoint+i])
+				}
 			}
-		}
 
-		if (c/8 == len(match) && !strings.Contains(match, "\n")) || (c/8 == len(match)-1 && strings.Contains(match, "\n")) {
-			if j < len(word)-1 {
-				word = word[j+1:]
+			if c/8 == len(match) {
+				if j < len(word)-1 {
+					input[a] = word[j+1:]
+				}
+				z = j + 1
+				c = 0
 			}
-			z = j + 1
-			c = 0
 
 		}
-		// fmt.Println(c/8, matchs, j, len(input1), len(word), word, match, input)
+		if a != len(input)-1 {
+			big += strings.Join(arr, "\n") + "\n"
+			arr = make([]string, 8)
+
+		} else {
+			big += strings.Join(arr, "\n")
+		}
 
 	}
 
-	if rune(input[len(input)-1]) == '\n' {
-		fmt.Println(strings.Join(arr, "\n") + "\n")
-	} else {
-		fmt.Println(strings.Join(arr, "\n"))
-	}
+	return big
 }
 
 // Determines starting position of the character
@@ -84,15 +72,6 @@ func validChar(s rune) bool {
 	if !(s >= ' ' && s <= '~') {
 		fmt.Println("Error:" + string(s) + " " + "is not valid character")
 		return false
-	}
-	return true
-}
-
-func isSliceEmpty(arr []string) bool {
-	for _, v := range arr {
-		if v != "" {
-			return false
-		}
 	}
 	return true
 }
