@@ -23,40 +23,62 @@ Usage: go run . [OPTION] [STRING] [BANNER]
 EX: go run . --output=<fileName.txt> something standard
 ```
 
-*  The substring to be colored can be a single letter or more.
-*  If the substring is not specified the whole string gets
-   colored.
-*  The flag must have exactly the same format as shown above.
-   You can use different --color flag notations like: --color=red, --color=#ff0000, --color=rgb(255, 0, 0) or --color=hsl(0, 100%, 50%).
 
-# Example
+## NOTE
+1. This program builds on the ASCII Art from  **[ASCII-REPOSITORY](https://learn.zone01kisumu.ke/git/wyonyango/ascii-art.git)**
+2. This program supports ASCII Art Color from **[ASCII-ART-COLOR-REPOSITORY](https://learn.zone01kisumu.ke/git/lakoth/ascii-art-color)**
+3. This program also supports ASCII-Art-fs from  **[ASCII-ART-FS REPOSITOTY](https://learn.zone01kisumu.ke/git/wyonyango/ascii-art-fs.git)**
 
-![alt text](<Screenshot from 2024-07-09 11-16-05.png>)
+## Example 1
+
+```console
+go run . --output=banner.txt "hello" standard
+cat -e banner.txt
+```
+- Output
+``` 
+ _              _   _          $
+| |            | | | |         $
+| |__     ___  | | | |   ___   $
+|  _ \   / _ \ | | | |  / _ \  $
+| | | | |  __/ | | | | | (_) | $
+|_| |_|  \___| |_| |_|  \___/  $
+                               $
+                               $
+```
+
+## Example 2
+
+```console
+go run . --output=banner.txt 'Hello There!' shadow
+cat -e banner.txt
+```
+- Output
+``` 
+                                                                                         $
+_|    _|          _| _|                _|_|_|_|_| _|                                  _| $
+_|    _|   _|_|   _| _|   _|_|             _|     _|_|_|     _|_|   _|  _|_|   _|_|   _| $
+_|_|_|_| _|_|_|_| _| _| _|    _|           _|     _|    _| _|_|_|_| _|_|     _|_|_|_| _| $
+_|    _| _|       _| _| _|    _|           _|     _|    _| _|       _|       _|          $
+_|    _|   _|_|_| _| _|   _|_|             _|     _|    _|   _|_|_| _|         _|_|_| _| $
+                                                                                         $
+                                                                                         $
+```
+
+## Dependencies
+This program requires Go (Golang) to be installed on your system. You can download and install it from the [official Go website](https://golang.org/dl/).
+
+## Contributing
+Contributions to this project are welcome! If you'd like to contribute, please fork the repository and submit a pull request with your changes.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 
-## File System
 
-1. **functions**
-
-    This subdirectory has files containing functions used in the program.
-*   color.go - it returns the color code to be used for coloring.
-*   fileChoice.go  - it handles the banner file containing the ascii-art characters.
-*   printWords.go  - it does the actual conversion of regular text to ascii-art and applies  the color specified.
-*   userInputString.go -   it handles the input passed by the user in the terminal. The function also ensures that the required format of the flag is used.
-*   functions_test.go   - contains various tests for the functions used. To run the test use the commands below:
-
-    ```bash
-    $ cd functions
-    $ go test
-    ```
-
-
-2.  **main.go**
-
-    This is the entry point of the program. It calls the functions to produce the desired output according as per the user's input.
 
 
 ## Contributors
 
 * [Nungo Edwin](https://github.com/NungoEdwin)
-* [Rabin Otieno](https://github.com/Rabinnnn/ascii-art-color)
+
