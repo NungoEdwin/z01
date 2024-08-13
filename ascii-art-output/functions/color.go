@@ -3,8 +3,6 @@ package functions
 import (
 	"flag"
 	"fmt"
-	"os"
-	//"fmt"
 )
 
 func Color() string {
@@ -86,6 +84,8 @@ func Color() string {
 	flag.Visit(func(f *flag.Flag) {
 		if f.Name == "color" {
 			result = string(f.Value.String())
+		} else if f.Name == "color1" {
+			result = string(f.Value.String())
 		}
 	})
 
@@ -93,7 +93,7 @@ func Color() string {
 
 	if !ok {
 		fmt.Println("Color not found")
-		os.Exit(0)
+		return ""
 	}
 
 	return colorcode

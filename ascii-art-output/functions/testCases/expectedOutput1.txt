@@ -1,0 +1,8 @@
+              \x1b[31m       \x1b[0m\x1b[31m _  \x1b[0m\x1b[31m _    \x1b[0m       _                          \x1b[31m       \x1b[0m\x1b[31m _  \x1b[0m\x1b[31m _    \x1b[0m _                   
+              \x1b[31m _     \x1b[0m\x1b[31m(_) \x1b[0m\x1b[31m| |   \x1b[0m      | |                         \x1b[31m _     \x1b[0m\x1b[31m(_) \x1b[0m\x1b[31m| |   \x1b[0m| |                  
+  __ _        \x1b[31m| | _  \x1b[0m\x1b[31m _  \x1b[0m\x1b[31m| |_  \x1b[0m      | |__     __ _   ___        \x1b[31m| | _  \x1b[0m\x1b[31m _  \x1b[0m\x1b[31m| |_  \x1b[0m| |_    ___   _ __   
+ / _` |       \x1b[31m| |/ / \x1b[0m\x1b[31m| | \x1b[0m\x1b[31m| __| \x1b[0m      |  _ \   / _` | / __|       \x1b[31m| |/ / \x1b[0m\x1b[31m| | \x1b[0m\x1b[31m| __| \x1b[0m| __|  / _ \ | '_ \  
+| (_| |       \x1b[31m|   <  \x1b[0m\x1b[31m| | \x1b[0m\x1b[31m\ |_  \x1b[0m      | | | | | (_| | \__ \       \x1b[31m|   <  \x1b[0m\x1b[31m| | \x1b[0m\x1b[31m\ |_  \x1b[0m\ |_  |  __/ | | | | 
+ \__,_|       \x1b[31m|_|\_\ \x1b[0m\x1b[31m|_| \x1b[0m\x1b[31m \__| \x1b[0m      |_| |_|  \__,_| |___/       \x1b[31m|_|\_\ \x1b[0m\x1b[31m|_| \x1b[0m\x1b[31m \__| \x1b[0m \__|  \___| |_| |_| 
+              \x1b[31m       \x1b[0m\x1b[31m    \x1b[0m\x1b[31m      \x1b[0m                                  \x1b[31m       \x1b[0m\x1b[31m    \x1b[0m\x1b[31m      \x1b[0m                     
+              \x1b[31m       \x1b[0m\x1b[31m    \x1b[0m\x1b[31m      \x1b[0m                                  \x1b[31m       \x1b[0m\x1b[31m    \x1b[0m\x1b[31m      \x1b[0m                     
