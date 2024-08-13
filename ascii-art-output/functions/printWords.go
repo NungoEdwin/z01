@@ -32,6 +32,9 @@ func PrintWords(input1 string, asciiFields []string, match string) string {
 				startPoint := Start(int(rune(char)))
 				matchs = strings.Index(input[a], match) + z
 				if j >= matchs && j < matchs+len(match) && matchs != -1 && strings.ContainsRune(match, char) && strings.Contains(input[a], match) {
+					if Color() == "" {
+						return ""
+					}
 					arr[i] += (Color() + asciiFields[startPoint+i] + "\033[0m")
 					c++
 				} else {
