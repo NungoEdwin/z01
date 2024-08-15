@@ -24,13 +24,15 @@ func main() {
 		return
 	} else {
 		fmt.Println(output)
-		// os.WriteFile("")
 
 		flag.Visit(func(f *flag.Flag) {
 			if f.Name == "output" {
 				outputfile := fmt.Sprint(f.Value)
-
-				os.WriteFile(outputfile, []byte(output), 0o644)
+				if !(outputfile == "shadow.txt" || outputfile == "standard.txt" || outputfile == "thinkertoy.txt") {
+					os.WriteFile(outputfile, []byte(output), 0o644)
+				} else {
+					fmt.Println("Cant write into a banner file")
+				}
 
 			}
 		})
