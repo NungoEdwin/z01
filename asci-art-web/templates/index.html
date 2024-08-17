@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Art Generator</title>
+</head>
+<body>
+    <div class="body">
+        <h1>ASCII Art Generator</h1>
+        <form  class="ascii_form" action="/ascii-art" method="post" enctype="multipart/form-data">
+            <!-- <label for="text">Text:</label> -->
+            <!-- <input type="text" id="text" name="text" required><br><br> -->
+            <div class="ascii_input">
+                <textarea name="text" id="" cols="50" rows="10" required></textarea><br>
+            </div>
+            <div class="banner">
+                <h4>Choose Art File:</h4>
+                <label for="standard">Standard</label>
+                <input type="radio" id="standard" name="artFile" value="standard" checked><br>
+                <label for="shadow">Shadow</label>
+                <input type="radio" id="shadow" name="artFile" value="shadow"><br>
+                <label for="thinkertoy">ThinkerToy</label>
+                <input type="radio" id="thinkertoy" name="artFile" value="thinkertoy"><br>
+    
+            </div>
+    
+            <input class="submit" type="submit" value="Generate ASCII Art">
+        </form>
+
+    </div>
+</body>
+<style>
+body{
+        display: flex;
+        justify-content: center;
+    }
+.body{
+    display: flex;
+    width:50%;
+    flex-direction: column;
+    align-items:center;
+    border-radius:20px;
+    background-color:rgb(211, 207, 207);
+}
+textarea{
+    width:100%;
+    border-radius:15px;
+}
+.submit{
+    padding:10px;
+    width:40%;
+    background-color:rgb(72, 181, 224);
+    border-radius:10px;
+    margin:10px;
+}
+</style>
+</html>
