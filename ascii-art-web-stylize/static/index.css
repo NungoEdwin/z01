@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    max-width: 100vw;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, navy, green);
+    background-repeat: no-repeat;
+    margin: 0;
+    /* font-family: "Matemasie", sans-serif; */
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.inputDiv {
+    display: flex;
+    width: 100%;
+    max-width: 90%;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    background-image: linear-gradient(to bottom right, green, navy);
+    margin: 2%;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    
+}
+
+pre {
+    background-color: #bcdbfa;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.refresh {
+    background-color: #69c5f0;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.displayDiv {
+    overflow: auto;
+    max-width: 90%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #bcdbfa;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+}
+
+textarea {
+    /* font-family:"Matemasie", sans-serif ; */
+    background-color: #bcdbfa; 
+    /* background-image: linear-gradient(to bottom right, navy white); */
+    padding: 10px;
+    width: inherit;
+    border-radius: 15px;
+    border: none;
+    resize: vertical;
+}
+
+.submit {
+    /* font-family:"Matemasie", sans-serif ; */
+    padding: 10px;
+    width: 60%;
+    max-width: 200px;
+    background-color: #69c5f0;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}

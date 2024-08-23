@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Matemasie&display=swap" rel="stylesheet">
+
+
+
+
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ASCII Art Generator</title>
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+</head>
+<body>
+    <div class="inputDiv">
+        <h1>ASCII Art Generator</h1>
+        <form  class="ascii_form" action="/ascii-art" method="post" enctype="multipart/form-data">
+            <!-- <label for="text">Text:</label> -->
+            <!-- <input type="text" id="text" name="text" required><br><br> -->
+            <div class="ascii_input">
+                <textarea name="text" id="" cols="50" rows="10" required></textarea><br>
+            </div>
+            <div class="banner">
+                <h4>Choose Art File:</h4>
+                <label for="standard">Standard</label>
+                <input type="radio" id="standard" name="artFile" value="standard" checked><br>
+                <label for="shadow">Shadow</label>
+                <input type="radio" id="shadow" name="artFile" value="shadow"><br>
+                <label for="thinkertoy">ThinkerToy</label>
+                <input type="radio" id="thinkertoy" name="artFile" value="thinkertoy"><br>
+    
+            </div>
+    
+            <input class="submit" type="submit" value="Generate ASCII Art">
+        </form>
+        
+    </div>
+    <div class="displayDiv">
+
+        <h2>Your ASCII Art:</h2>
+        <pre>{{.Art}}</pre>
+    
+        
+    </div>
+    <div>
+        <a class="refresh" href=".">Generate another one</a>
+    </div>
+</body>
+
+</html>
