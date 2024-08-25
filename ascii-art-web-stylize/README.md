@@ -17,7 +17,7 @@ Usage: go run .
 1. **Clone the repository**:
 
     ```bash
-    git clone https://learn.zone01kisumu.ke/git/gonyango/ascii-art-web-stylize.git
+    git clone https://github.com/NungoEdwin/z01/ascii-art-web-stylize.git
     ```
 
 2. **Navigate to the project directory**:
@@ -56,16 +56,11 @@ Contributions to this project are welcome! If you'd like to contribute, please f
 <body>
 <div style="display: flex !important; justify-content: center !important;">
     <div style="margin: 10px;">
-        <img src="images/enungo.png" style="border-radius: 50% !important; width: 150px !important; height: 150px; !important" alt="Granton">
+        <img src="images/enungo.png" style="border-radius: 50% !important; width: 150px !important; height: 150px; !important" alt="Edwin">
         <p style="text-align: center;"><b><i>Edwin</i></b></p>
     </div>
 </div>
-<div style="display: flex !important; justify-content: center !important;">
-    <div style="margin: 10px;">
-        <img src="images/gonyango.png" style="border-radius: 50% !important; width: 150px !important; height: 150px; !important" alt="Granton">
-        <p style="text-align: center;"><b><i>Granton</i></b></p>
-    </div>
-</div>
+
 </body>
 
 
