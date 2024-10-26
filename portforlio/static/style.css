@@ -1,0 +1,36 @@
+#navigation{
+    background-color: green;
+    font-family: inherit;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+        font-style: bold;
+        font-size: xx-large;
+    }
+    
+    /* height:50px; */
+ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+    width:70%;
+    
+}
+a{
+    background-color:yellow;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration:none
+    
+    
+}
+.card{
+    background-color: black;
+    border-radius: 10px;
+    padding:20px;
+    width:400px;
+    height: 200px;
+}
+
+}
