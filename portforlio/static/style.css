@@ -1,36 +1,77 @@
-#navigation{
-    background-color: green;
-    font-family: inherit;
+#navigation {
+  background-color: green;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-style: bold;
+    font-size: xx-large;
+  }
+
+  /* height:50px; */
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    width: 70%;
+  }
+  a {
+    background-color: yellow;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+}
+.profile{
+    height: 500px;
+    width: 100%;
+    img{
+        width:100%;
+        max-height:100%;
+        border-radius: 10px;
+        object-fit:cover;
+        opacity: 0.1;
+    }
+  
+}
+.card {
+    background-color:rgb(223, 223, 226);
+    border-radius: 10px;
+    /* color:white; */
+    padding: 20px;
+    width: 80%;
+    height: 200px;
+    margin:5px;
+    .card_details{
+      display:flex;
+      justify-content:flex-start;
+      img{
+        width:20%;
+        height:190px;
+        object-fit:cover;
+        border-radius: 50%;
+        margin-right:150px;
+      }
+
+    };
+    .card_btn{
+display: flex;
+justify-content: center;
+button{
+  background-color: yellowgreen;
+  padding:5px;
+  font-style:italic;
+  font-weight: bold;
+  border-radius:5px;
+  margin-bottom:35px;
+
+}
+    }
+  }
+  .projects{
     display:flex;
     flex-direction: column;
     align-items: center;
-    h1{
-        font-style: bold;
-        font-size: xx-large;
-    }
-    
-    /* height:50px; */
-ul{
-    display:flex;
-    justify-content:center;
-    list-style:none;
-    width:70%;
-    
-}
-a{
-    background-color:yellow;
-    border-radius: 5px;
-    padding: 10px;
-    text-decoration:none
-    
-    
-}
-.card{
-    background-color: black;
-    border-radius: 10px;
-    padding:20px;
-    width:400px;
-    height: 200px;
-}
-
-}
+  }
