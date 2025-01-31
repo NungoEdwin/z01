@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii-art-web-Export-File</title>
+    <link href="/static/css/index.css" type="text/css" rel="stylesheet" />
+</head>
+<header class="header">
+    <h1>Export-File</h1>
+    <p>Exporting ASCII art files in style.</p>
+</header>
+<body>
+    <div class="container">
+        <div class="hero__caption">
+            <p>Effortlessly export your files with ease using different banner files.</p>
+        </div>
+
+        <fieldset>
+            <form action="/ascii-art" method="post" id="asciiArtForm">
+                <label for="text">Text:</label>
+                <textarea id="text" name="text" placeholder="Type something"></textarea>
+                
+                <fieldset class="banner-options">
+                    <legend>Banner:</legend>
+                    <label>
+                        <input type="radio" id="shadow" name="banner" value="shadow" required>
+                        Shadow
+                    </label>
+                    <label>
+                        <input type="radio" id="standard" name="banner" value="standard">
+                        Standard
+                    </label>
+                    <label>
+                        <input type="radio" id="thinkertoy" name="banner" value="thinkertoy">
+                        Thinkertoy
+                    </label>
+                </fieldset>
+                
+                <button type="submit">Generate</button>
+            </form>
+        </fieldset>
+
+        <h3>Result:</h3>
+        <div class="result">
+            <pre id="asciiResult">{{.Art}}</pre>
+        </div>
+
+        <div class="download">
+            <form action="/ascii-art" method="post">
+                <input type="hidden" name="text" value="{{.Text}}">
+                <input type="hidden" name="banner" value="{{.Banner}}">
+                <button type="submit" name="action" value="download">Download</button>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Export-File. All rights reserved. | Transforming ASCII art into visual masterpieces.</p>
+        <p>Explore the works of Export-File <a href="/">Back Home</a>.</p>
+    </footer>
+</body>
+</html>

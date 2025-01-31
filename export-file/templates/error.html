@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/error.css">
+    <title>Ascii-art-web-Export-File</title>
+</head>
+<header class="header">
+    <h1>Export-File</h1>
+    <p>Exporting ASCII art files with style.</p>
+</header>
+<body>
+    <div class="error-container">
+        <h1>Oops!</h1>
+        <p class="error-code">{{ .StatusCode}}</p>
+        <p class="error-message">{{.Message}}</p>
+        <a href="/" class="home-link">Back Home</a>
+    </div>
+</body>
+<footer class="footer">
+    <p>&copy; 2024 Export-File. All rights reserved. | Transforming ASCII art into visual masterpieces.</p>
+    <p>Explore the works of Export-File <a href="/">Back Home</a>.</p>
+</footer>
+</html>
