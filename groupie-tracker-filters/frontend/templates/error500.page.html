@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>500 - Internal Server Error | Groupie Trackers</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../static/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../static/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../static/icons/favicon-16x16.png"
+    />
+    <link rel="stylesheet" href="../static/styles/error500.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <svg
+        class="error-illustration pulse"
+        width="200"
+        height="200"
+        viewBox="0 0 200 200"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="40"
+          y="60"
+          width="120"
+          height="80"
+          rx="10"
+          stroke="#FFD700"
+          stroke-width="4"
+        />
+        <path d="M50 80H150" stroke="#FFD700" stroke-width="4" />
+        <path d="M50 100H150" stroke="#FFD700" stroke-width="4" />
+        <path d="M50 120H150" stroke="#FFD700" stroke-width="4" />
+        <circle cx="170" cy="70" r="20" fill="#FFD700" opacity="0.5">
+          <animate
+            attributeName="opacity"
+            values="0.5;1;0.5"
+            dur="2s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <path
+          d="M165 65L175 75M175 65L165 75"
+          stroke="#0a2a4a"
+          stroke-width="4"
+        />
+      </svg>
+
+      <h1>500</h1>
+      <p>
+        Oops! Our server hit a wrong note. We're working on getting back in
+        tune.
+      </p>
+      <a href="/" class="btn">Return to Homepage</a>
+      <a href="../templates/about.page.html" class="btn btn-secondary"
+        >Contact Support</a
+      >
+    </div>
+
+    <script src="../static/scripts/Error500.js"></script>
+  </body>
+</html>

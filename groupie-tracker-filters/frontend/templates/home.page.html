@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Groupie Tracker</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../static/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../static/icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/icons/favicon-16x16.png" />
+  <link rel="manifest" href="../static/icons/site.webmanifest" />
+  <link rel="stylesheet" href="../static/styles/index.css?v=1.0" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Groupie Tracker</h1>
+    <nav>
+      <a href="/about" class="about-btn">About</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="search-filter">
+      <div class="search-container">
+        <input type="text" id="search" placeholder="Search artists..." />
+        <div id="suggestions"></div>
+      </div>
+      <select id="filter">
+        <option value="Filter by...">Filter by...</option>
+        <option value="name">Name</option>
+        <option value="active_since">Active since</option>
+        <option value="first_album">First Album</option>
+        <option value="location">Location</option>
+      </select>
+      <div id="membersFilter">
+        <h4>Filter by Number of Members</h4>
+        <label><input type="checkbox" name="members" value="1" /> 1</label>
+        <label><input type="checkbox" name="members" value="2" /> 2</label>
+        <label><input type="checkbox" name="members" value="3" /> 3</label>
+        <label><input type="checkbox" name="members" value="4" /> 4</label>
+        <label><input type="checkbox" name="members" value="5" /> 5</label>
+        <label><input type="checkbox" name="members" value="6" /> 6</label>
+        <label><input type="checkbox" name="members" value="7" /> 7</label>
+      </div>
+      <div class="slider-box">
+        <label for="creationDate">Active since:</label>
+        <input type="text" id="creationDate" readonly>
+        <div id="creation-date" class="slider"></div>
+      </div>
+
+      <div class="slider-box">
+        <label for="firstAlbum">First Album Date:</label>
+        <input type="text" id="firstAlbum" readonly>
+        <div id="first-album" class="slider"></div>
+      </div>
+      <button id="resetFilters">Reset Filters</button>
+    </div>
+    <div class="artist-grid" id="artistGrid"></div>
+    <div class="loading" id="loading"></div>
+    <div id="skeletonContainer"></div>
+    <div id="pages" class="pagination-controls">
+      <span id="prevPage" aria-label="Previous page">&lt;</span>
+      <span id="currentPage"></span>
+      <span id="nextPage" aria-label="Next page">&gt;</span>
+    </div>
+  </div>
+  <div id="overlay"></div>
+  <div class="modal" id="artistModal">
+    <span class="close" id="closeModal">&times;</span>
+    <div id="modalArtistContent"></div>
+  </div>
+  <footer>
+    <p>&copy; 2024 Groupie Tracker. All rights reserved.</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script type="module" src="../static/scripts/script.js"></script>
+</body>
+
+</html>
