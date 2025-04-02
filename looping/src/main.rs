@@ -5,7 +5,7 @@ fn main() {
     loop{
         println!("Riddle: I am the beginning of the end, and the end of time and space. I am essential to creation, and I surround every place. What am I?");
         let _=io::stdin().read_line(&mut input);
-        c+=1
+        c+=1;
         if input=="The letter e"{
          break println!("Number of trials {}",c);
         }
