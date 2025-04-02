@@ -3,11 +3,12 @@ fn main() {
     let mut input=String::new();
     let mut c=0;
     loop{
-        println!("Riddle: I am the beginning of the end, and the end of time and space. I am essential to creation, and I surround every place. What am I?");
+        println!("I am the beginning of the end, and the end of time and space. I am essential to creation, and I surround every place. What am I?");
         let _=io::stdin().read_line(&mut input);
         c+=1;
         if input=="The letter e"{
-         break println!("Number of trials {}",c);
+          println!("Number of trials {}",c);
+          break;
         }
     }
 }
