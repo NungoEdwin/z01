@@ -1,6 +1,6 @@
 use std::io;
 fn main() {
-    let mut gotcha=false
+    let mut gotcha=false;
     let mut input=String::new();
     let mut c=0;
     while !gotcha{
