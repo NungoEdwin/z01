@@ -9,7 +9,7 @@ fn main() {
        input =input.trim().parse().expect("failed parsing &str to str");
         c+=1;
         if input=="The letter e"{
-          println!("Number of trials {}",c);
+          println!("Number of trials: {}",c);
           gotcha=true;
         }
     }
