@@ -19,8 +19,8 @@ Security::NotFound=>match server{
     Err(err)=>format!("Not found: {}",err),
 }
 Security::UnexpectedUrl=>match server{
-    Ok(err)=>err.to_string(),
-    Err(url)=>panic!("{url}")
+    Ok(url)=>panic!("{url}")
+    Err(err)=>err.to_string(),
 }
     }
 }   
