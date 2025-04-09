@@ -11,10 +11,10 @@ pub fn fetch_data(server: Result<&str, &str>, security_level: Security) -> Strin
     Ok(url)=>url.to_string(),
     Err(err)=>match security_level{
 Security::Unknown=>panic!("{err}"),
-Security::Message=>format!("ERROR : program stops"),
+Security::Message=>panic!("ERROR : program stops"),
 Security::Warning=>format!("WARNING : check the server"),
 Security::NotFound=>format!("Not found : {}",err),
-Security::UnexpectedUrl=>panic!("{err}")
+Security::UnexpectedUrl=>format!("{err}")
     }
 
   }   
