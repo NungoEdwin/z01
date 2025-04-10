@@ -1,4 +1,8 @@
 pub fn expected_variable(compared: &str, expected: &str) -> Option<String> {
+    
+    if compared.len()==0|| expected.len()==0{
+        return None;
+    }
     // Enhanced case validation
     let is_snake = compared.contains('_');
     let is_camel = !is_snake && compared.chars().any(|c| c.is_uppercase());
