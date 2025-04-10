@@ -1,58 +1,48 @@
 pub fn expected_variable(compared: &str, expected: &str) -> Option<String> {
-    if !is_snake_case(compared) && !is_camel_case(compared) {
+    // Enhanced case validation
+    let is_snake = compared.contains('_');
+    let is_camel = !is_snake && compared.chars().any(|c| c.is_uppercase());
+    if !is_camel && !is_snake {
         return None;
     }
-
-    let expected_len = expected.len() as i32;
-    let distance = edit_distance(&compared.to_lowercase(), &expected.to_lowercase()) as i32;
-
+    
+    // Case-insensitive comparison
+    let compared_lower = compared.to_lowercase();
+    let expected_lower = expected.to_lowercase();
+    let distance = edit_distance(&compared_lower, &expected_lower);
+    let expected_len = expected_lower.len();
     if expected_len == 0 {
         return None;
     }
-
-    let similarity = 100 - ((distance * 100) / expected_len);
-
-    if similarity >= 50 {
-        Some(format!("{}%", similarity))
-    } else {
-        None
-    }
+    
+    let similarity = ((expected_len as f64 - distance as f64) / expected_len as f64) * 100.0;
+    let similarity_rounded = similarity.round() as u32;
+    (similarity_rounded > 50).then(|| format!("{}%", similarity_rounded))
 }
 
-// A string must have underscores and no uppercase letters to be snake_case
-fn is_snake_case(s: &str) -> bool {
-    s.contains('_') && !s.chars().any(|c| c.is_uppercase())
-}
-
-// A string must not have underscores, must start lowercase, and contain at least one uppercase
-fn is_camel_case(s: &str) -> bool {
-    !s.contains('_')
-        && s.chars().next().map(|c| c.is_lowercase()).unwrap_or(false)
-        && s.chars().any(|c| c.is_uppercase())
-}
-
-// Basic edit distance function
+// Implement edit_distance in the same file
 fn edit_distance(a: &str, b: &str) -> usize {
-    let mut costs = vec![0; b.len() + 1];
-
-    for j in 0..=b.len() {
-        costs[j] = j;
+    let a_chars: Vec<char> = a.chars().collect();
+    let b_chars: Vec<char> = b.chars().collect();
+    let (a_len, b_len) = (a_chars.len(), b_chars.len());
+    let mut dp = vec![vec![0; b_len + 1]; a_len + 1];
+    
+    for i in 0..=a_len {
+        dp[i][0] = i;
     }
-
-    for (i, ca) in a.chars().enumerate() {
-        let mut last_cost = i;
-        costs[0] = i + 1;
-
-        for (j, cb) in b.chars().enumerate() {
-            let new_cost = if ca == cb {
-                last_cost
-            } else {
-                1 + std::cmp::min(std::cmp::min(costs[j], costs[j + 1]), last_cost)
-            };
-            last_cost = costs[j + 1];
-            costs[j + 1] = new_cost;
+    
+    for j in 0..=b_len {
+        dp[0][j] = j;
+    }
+    
+    for i in 1..=a_len {
+        for j in 1..=b_len {
+            let cost = if a_chars[i - 1] == b_chars[j - 1] { 0 } else { 1 };
+            dp[i][j] = (dp[i - 1][j] + 1)
+                .min(dp[i][j - 1] + 1)
+                .min(dp[i - 1][j - 1] + cost);
         }
     }
-
-    costs[b.len()]
+    
+    dp[a_len][b_len]
 }
