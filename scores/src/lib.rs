@@ -1,4 +1,4 @@
-fn score(str:&str)->u64{
+pub fn score(str:&str)->u64{
     let ownedstr=str.to_string().to_uppercase();
         let mut score:u64=0;
         for l in ownedstr.chars(){
