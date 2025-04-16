@@ -46,7 +46,8 @@ impl GameSession {
         
      }
      pub fn delete(self) -> String {
+        let id=self.id;
           drop(self);
-          String::from("game deleted: id -> 0")
+          formart!("game deleted: id -> {}",id)
     }
 }
