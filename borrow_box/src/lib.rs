@@ -48,6 +48,6 @@ impl GameSession {
      pub fn delete(self) -> String {
         let id=self.id;
           drop(self);
-          formart!("game deleted: id -> {}",id)
+          format!("game deleted: id -> {}",id)
     }
 }
