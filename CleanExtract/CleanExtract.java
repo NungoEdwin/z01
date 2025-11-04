@@ -1,30 +1,40 @@
 public class CleanExtract{
-        public static String extract(String s) {
+     public static String extract(String s) {
         if (s == null || s.isEmpty()) {
             return "";
         }
-        String[] parts = s.split("\\|");
+        String[] parts = s.split("\\|", -1);  // keep empty segments
         StringBuilder out = new StringBuilder();
         for (String part : parts) {
-            // trim leading/trailing whitespace
             String trimmed = part.trim();
             if (trimmed.isEmpty()) {
                 continue;
             }
             int firstDot = trimmed.indexOf('.');
-            int lastDot = trimmed.lastIndexOf('.');
-            // require at least two dots (or same dot counts if they coincide) so there is something between them
-            if (firstDot >= 0 && lastDot >= 0 && lastDot > firstDot) {
-                String between = trimmed.substring(firstDot + 1, lastDot);
-                between = between.trim();
+            int lastDot  = trimmed.lastIndexOf('.');
+            // Only extract if there are at least two distinct dot positions
+            if (firstDot >= 0 && lastDot > firstDot) {
+                String between = trimmed.substring(firstDot + 1, lastDot).trim();
                 if (!between.isEmpty()) {
                     if (out.length() > 0) {
                         out.append(" ");
                     }
                     out.append(between);
                 }
+            } else {
+                // If there is exactly one dot, maybe we still take the part *after* the dot?
+                // For example: "Who am .I" → we might want "I"
+                if (firstDot >= 0 && lastDot == firstDot) {
+                    String after = trimmed.substring(firstDot + 1).trim();
+                    if (!after.isEmpty()) {
+                        if (out.length() > 0) {
+                            out.append(" ");
+                        }
+                        out.append(after);
+                    }
+                }
+                // else: no dots or other cases → skip
             }
-            // if no proper dot‐pair found, we skip that part
         }
         return out.toString();
     }
