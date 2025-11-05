@@ -8,6 +8,9 @@ public static String operate(String[] args){
 		int right=Integer.parseInt(args[2]);
 		String sign=args[1];
 		int tot=0;
+		if(sign!="+"&&sign!="-"&&sign!="*"&&sign!="/"&&sign!="%"){
+		return "Error";
+		}
 	switch (sign){
 			case "+":{
 			tot=left + right;
