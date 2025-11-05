@@ -1,7 +1,7 @@
 public class DoOp{
 public static String operate(String[] args){
-	if(args.length!=3){
-	return "it depend on the input.";
+	if(args.length!=3||args==null){
+		return "Error";
 	}
 		try{	
 		int left=Integer.parseInt(args[0]);
@@ -28,7 +28,10 @@ public static String operate(String[] args){
 			case "%":{
 			tot= left % right;
 			break;
-			}			 
+			}
+			default:{
+			 return "it depend on the input";
+			}			
 	}
 	return Integer.toString(tot);
 }catch(ArithmeticException e){
