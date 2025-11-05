@@ -15,7 +15,7 @@ public class ComputeArray {
                 if (rem==1){
                     result[i] = x + 7;
                 }else{
-                    result[i]= x - 7;
+                    result[i]= x;
                 }
             }else if (rem==2 || rem ==-2){
                 result[i] = x;
