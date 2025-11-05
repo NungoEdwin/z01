@@ -17,7 +17,7 @@ public static String operate(String[] args){
 			tot=left - right;
 			break;
 			}
-			case "x":{
+			case "*":{
 			tot=left * right;
 			break;
 			}
