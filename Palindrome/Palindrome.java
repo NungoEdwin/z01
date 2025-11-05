@@ -3,10 +3,11 @@ public class Palindrome {
         if (s == null) {
             return false;
         }
+        String str=s.toLowerCase();
         int left  = 0;
-        int right = s.length() - 1;
+        int right = str.length() - 1;
         while (left < right) {
-            if (s.charAt(left) != s.charAt(right)) {
+            if (str.charAt(left) != str.charAt(right)) {
                 return false;
             }
             left++;
