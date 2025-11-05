@@ -11,9 +11,9 @@ public class ComputeArray {
             if (rem == 0) {
               result[i] = x * 5;
                 
-            } else if (rem == 1) {
+            } else if (rem == 1 || rem==-1) {
                 result[i] = x + 7;
-            }else if (rem==2){
+            }else if (rem==2 || rem ==-2){
                 result[i] = x;
             }
         }
