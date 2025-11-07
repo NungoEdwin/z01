@@ -1,6 +1,6 @@
 public class CelestialObject{
-double x,y,z;
-String name;
+public double x,y,z;
+public String name;
 public CelestialObject(){
 name="Soleil";
 x=0.0;
