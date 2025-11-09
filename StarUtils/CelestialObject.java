@@ -48,7 +48,7 @@ return ((double) Math.sqrt(Math.pow(b.getX()-a.getX(),2)+Math.pow(b.getY()-a.get
 }
 @Override
 public String toString(){
-	return String.format("%s is positioned at (%.3f, %.3f, %.3f",this.name,this.x,this.y,this.z);
+	return String.format("%s is positioned at (%.3f, %.3f, %.3f)",this.name,this.x,this.y,this.z);
 }
  @Override
     public boolean equals(Object obj) {
