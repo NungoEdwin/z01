@@ -10,9 +10,9 @@ this.currentHealth=maxHealth;
 @Override
 public String toString(){
 if(currentHealth==0){
-return String.format("%s: KO",name);
+return String.format("%s : KO",name);
 }
- return String.format("%s: %d/%d",name,currentHealth,maxHealth);
+ return String.format("%s : %d/%d",name,currentHealth,maxHealth);
 }
 public void takeDamage(int sub){
 currentHealth=currentHealth-sub;
