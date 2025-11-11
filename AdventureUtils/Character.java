@@ -54,6 +54,11 @@ StringBuilder sb = new StringBuilder();
     return sb.toString();	
 }
 public static Character fight(Character a,Character b){
+    if(a.getCurrentHealth()==0){
+        return b;
+    }else if(b.getCurrentHealth()==0){
+        return a;
+    }
     int sub;
 if(a.getCurrentHealth()>=b.getCurrentHealth()){
     if(b.getCurrentHealth()%9==0){
@@ -65,18 +70,18 @@ if(a.getCurrentHealth()>=b.getCurrentHealth()){
    b.currentHealth=0;
    System.out.println(sub);
 		return a;
-}else if(b.getCurrentHealth()-a.getCurrentHealth()>9){
+}else if(b.getCurrentHealth()>9){
        if(a.getCurrentHealth()%9==0){
        sub=(a.getCurrentHealth()/9 -1 ) *9;
        }else{
-       sub=(((int)Math.ceil((double) a.getCurrentHealth()/9))-1)*9;
+       sub=(((int)Math.ceil((double) a.getCurrentHealth()/9)))*9;
        }
    b.currentHealth=b.getCurrentHealth() - sub;
    a.currentHealth=0;
    System.out.println(sub);
    return b;
 
-}
+};
 if(b.getCurrentHealth()%9==0){
         sub=(b.getCurrentHealth()/9 -1 ) *9;
     }else{
@@ -84,13 +89,14 @@ if(b.getCurrentHealth()%9==0){
     }
    a.currentHealth=a.getCurrentHealth() - sub;
    b.currentHealth=0;
+   System.out.println(sub);
 return a;
 }
 public static void main(String[] args) {
      System.out.print(Character.printStatus());
 
-        Character aragorn = new Character("Aragorn", 12);
-        Character uruk = new Character("Uruk", 18);
+        Character aragorn = new Character("Aragorn", 10);
+        Character uruk = new Character("Uruk", 19);
 
         System.out.print(Character.printStatus());
 
