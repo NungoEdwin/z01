@@ -2,7 +2,7 @@ public class Character{
 private final int maxHealth;
 private int currentHealth;
 private final String name;
-Character(String name,int maxHealth){
+public Character(String name,int maxHealth){
 this.name=name;
 this.maxHealth=maxHealth;
 this.currentHealth=maxHealth;
