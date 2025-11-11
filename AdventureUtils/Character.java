@@ -54,15 +54,26 @@ StringBuilder sb = new StringBuilder();
     return sb.toString();	
 }
 public static Character fight(Character a,Character b){
+    int sub;
 if(a.getCurrentHealth()>=b.getCurrentHealth()){
-    int sub=(((int)Math.ceil((double) b.getCurrentHealth()/9))-1)*9;
+    if(b.getCurrentHealth()%9==0){
+        sub=(b.getCurrentHealth()/9 -1 ) *9;
+    }else{
+        sub=(((int)Math.ceil((double) b.getCurrentHealth()/9))-1)*9;
+    }
    a.currentHealth=a.getCurrentHealth() - sub;
    b.currentHealth=0;
+   System.out.println(sub);
 		return a;
-}
-int sub=(((int)Math.ceil((double) a.getCurrentHealth()/9))-1)*9;
+};
+ if(a.getCurrentHealth()%9==0){
+    sub=(a.getCurrentHealth()/9 -1 ) *9;
+    }else{
+    sub=(((int)Math.ceil((double) a.getCurrentHealth()/9))-1)*9;
+    }
 b.currentHealth=b.getCurrentHealth() - sub;
 a.currentHealth=0;
+System.out.println(sub);
 return b;
 }
 public static void main(String[] args) {
