@@ -1,6 +1,6 @@
 public class Character{
-final int maxHealth;
-public int currentHealth;
+private final int maxHealth;
+private int currentHealth;
 private final String name;
 Character(String name,int maxHealth){
 this.name=name;
