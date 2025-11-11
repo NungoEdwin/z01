@@ -65,22 +65,32 @@ if(a.getCurrentHealth()>=b.getCurrentHealth()){
    b.currentHealth=0;
    System.out.println(sub);
 		return a;
-};
- if(a.getCurrentHealth()%9==0){
-    sub=(a.getCurrentHealth()/9 -1 ) *9;
+}else if(b.getCurrentHealth()-a.getCurrentHealth()>9){
+       if(a.getCurrentHealth()%9==0){
+       sub=(a.getCurrentHealth()/9 -1 ) *9;
+       }else{
+       sub=(((int)Math.ceil((double) a.getCurrentHealth()/9))-1)*9;
+       }
+   b.currentHealth=b.getCurrentHealth() - sub;
+   a.currentHealth=0;
+   System.out.println(sub);
+   return b;
+
+}
+if(b.getCurrentHealth()%9==0){
+        sub=(b.getCurrentHealth()/9 -1 ) *9;
     }else{
-    sub=(((int)Math.ceil((double) a.getCurrentHealth()/9))-1)*9;
+        sub=(((int)Math.ceil((double) b.getCurrentHealth()/9))-1)*9;
     }
-b.currentHealth=b.getCurrentHealth() - sub;
-a.currentHealth=0;
-System.out.println(sub);
-return b;
+   a.currentHealth=a.getCurrentHealth() - sub;
+   b.currentHealth=0;
+return a;
 }
 public static void main(String[] args) {
      System.out.print(Character.printStatus());
 
-        Character aragorn = new Character("Aragorn", 20);
-        Character uruk = new Character("Uruk", 15);
+        Character aragorn = new Character("Aragorn", 12);
+        Character uruk = new Character("Uruk", 18);
 
         System.out.print(Character.printStatus());
 
