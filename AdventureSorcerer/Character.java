@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Character{
 private final int maxHealth;
-public int currentHealth;
+private int currentHealth;
 private final String name;
 private static List <Character> allCharacters=new ArrayList<>();
 public Character(String name,int maxHealth){
@@ -31,6 +31,9 @@ public int getMaxHealth(){
 }
 public int getCurrentHealth(){
 return this.currentHealth;
+}
+public void setCurrentHealth(int a){
+    this.currentHealth=a;
 }
 public String getName(){
 return this.name;

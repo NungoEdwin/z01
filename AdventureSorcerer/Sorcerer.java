@@ -9,9 +9,9 @@ public int getHealCapacity(){
 }
 public void heal(Character ch){
 if(ch.getCurrentHealth()+this.getHealCapacity() > ch.getMaxHealth()){
-ch.currentHealth=ch.getMaxHealth();
+ch.setCurrentHealth(ch.getMaxHealth());
 }else{
- ch.currentHealth=ch.getCurrentHealth()+this.getHealCapacity();
+ ch.setCurrentHealth(ch.getCurrentHealth()+this.getHealCapacity());
 }
 }
 @Override
