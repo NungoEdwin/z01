@@ -34,7 +34,7 @@ public int getMaxHealth(){
 public int getCurrentHealth(){
 return this.currentHealth;
 }
-public void setCurrentHealth(int a){
+protected void setCurrentHealth(int a){
     this.currentHealth=a;
 }
 public String getName(){
