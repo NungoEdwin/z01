@@ -18,8 +18,8 @@ return String.format("%s : KO",name);
 }
  return String.format("%s : %d/%d",name,currentHealth,maxHealth);
 }
-abstract void takeDamage(int sub);
-abstract void attack(Character s);
+public abstract void takeDamage(int sub);
+public abstract void attack(Character s);
 // public void takeDamage(int sub){
 // currentHealth=currentHealth-sub;
 // currentHealth=(currentHealth<=0)?0:currentHealth;
