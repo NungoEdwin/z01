@@ -3,7 +3,7 @@ import java.util.List;
 public class SortList {
 
     public static List<Integer> sort(List<Integer> list) {
-        if(list==null) return new ArrayList<Integer>();
+        if(list==null||list.isEmpty()) return new ArrayList<Integer>();
   List<Integer> copy=new ArrayList(list);
         copy.sort((a,b) -> {return a.compareTo(b);});
         //copy.sort(Integer::compareTo);
@@ -11,7 +11,7 @@ public class SortList {
    	}
 
     public static List<Integer> sortReverse(List<Integer> list) {
-    if(list==null) return new ArrayList<Integer>();
+    if(list==null|| list.isEmpty()) return new ArrayList<Integer>();
     List<Integer> copy=new ArrayList(list);
    copy.sort( (a,b) -> {return -1 * a.compareTo(b);});
 return copy;
