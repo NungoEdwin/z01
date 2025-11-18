@@ -23,7 +23,7 @@ return index;
 }
 public static List<Integer> findAllIndexes(List<Integer> list,Integer value){
 if(list==null){
-return null;
+return new ArrayList<Integer>();
 }
 List<Integer> ret= new ArrayList<Integer>();
 for(int i=0;i<list.size();i++){
