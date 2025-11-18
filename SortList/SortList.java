@@ -6,15 +6,15 @@ public class SortList {
         if(list==null||list.isEmpty()) return new ArrayList<>();
         //if(list.isEmpty()) return list;
   List<Integer> copy=new ArrayList<>(list);
-        copy.sort((a,b) -> {return a.compareTo(b);});
-        //copy.sort(Integer::compareTo);
+        //copy.sort((a,b) -> {return a.compareTo(b);});
+        copy.sort(Integer::compareTo);
  return copy; 
    	}
 
     public static List<Integer> sortReverse(List<Integer> list) {
     if(list==null||list.isEmpty()) return new ArrayList<>();
     //if(list.isEmpty()) return list;
-    List<Integer> copy=new ArrayList<Integer>(list);
+    List<Integer> copy=new ArrayList<>(list);
    copy.sort( (a,b) -> {return -1 * a.compareTo(b);});
 return copy;
    	}
