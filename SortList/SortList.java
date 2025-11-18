@@ -3,18 +3,18 @@ import java.util.List;
 public class SortList {
 
     public static List<Integer> sort(List<Integer> list) {
-        if(list==null) return new ArrayList<Integer>();
-        if(list.isEmpty()) return list;
-  List<Integer> copy=new ArrayList(list);
+        if(list==null||list.isEmpty()) return new ArrayList<>();
+        //if(list.isEmpty()) return list;
+  List<Integer> copy=new ArrayList<>(list);
         copy.sort((a,b) -> {return a.compareTo(b);});
         //copy.sort(Integer::compareTo);
  return copy; 
    	}
 
     public static List<Integer> sortReverse(List<Integer> list) {
-    if(list==null) return new ArrayList<Integer>();
-    if(list.isEmpty()) return list;
-    List<Integer> copy=new ArrayList(list);
+    if(list==null||list.isEmpty()) return new ArrayList<>();
+    //if(list.isEmpty()) return list;
+    List<Integer> copy=new ArrayList<Integer>(list);
    copy.sort( (a,b) -> {return -1 * a.compareTo(b);});
 return copy;
    	}
