@@ -12,7 +12,7 @@ public class SortList {
    	}
 
     public static List<Integer> sortReverse(List<Integer> list) {
-    if(list==null||list.isEmpty()) return new ArrayList<>();
+    if(list==null) return null;
     //if(list.isEmpty()) return list;
     List<Integer> copy=new ArrayList<>(list);
    //copy.sort( (a,b) -> {return -1 * a.compareTo(b);});
