@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class SortList {
 
@@ -14,8 +15,8 @@ public class SortList {
     if(list==null||list.isEmpty()) return new ArrayList<>();
     //if(list.isEmpty()) return list;
     List<Integer> copy=new ArrayList<>(list);
-   copy.sort( (a,b) -> {return -1 * a.compareTo(b);});
-    //Collections.sort(sortedList, Collections.reverseOrder()); alternatively
+   //copy.sort( (a,b) -> {return -1 * a.compareTo(b);});
+    Collections.sort(copy, Collections.reverseOrder());
 return copy;
    	}
   	public static void main(String[] args) {
