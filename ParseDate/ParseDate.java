@@ -19,6 +19,7 @@ public class ParseDate {
         if(stringDate==null){
             return null;
         }
+        String stringDate1=stringDate.toLowerCase();//add this to take care of uppercase which may not be caught in that if for am n pm part
         // Extract numbers using regex
         String[] parts = stringDate.split("\\D+"); // split on non-digits
         int hour = Integer.parseInt(parts[0]);
@@ -26,7 +27,7 @@ public class ParseDate {
         int second = Integer.parseInt(parts[2]);
 
         // Adjust for "du soir" (PM)
-        if (stringDate.contains("du soir") && hour < 12) {
+        if (stringDate1.contains("du soir") && hour < 12) {
             hour += 12;
         }
 
@@ -36,7 +37,7 @@ public class ParseDate {
  public static void main(String[] args) {
         System.out.println(ParseDate.parseIsoFormat("2022-04-25T20:51:28.709039322"));
         System.out.println(ParseDate.parseFullTextFormat("lundi 25 avril 2022"));
-        System.out.println(ParseDate.parseTimeFormat("09 heures du soir, 07 minutes et 23 secondes"));
+        System.out.println(ParseDate.parseTimeFormat("06 heures du soir, 07 minutes et 23 secondes"));
     }
 
 }
