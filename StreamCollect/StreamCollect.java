@@ -1,14 +1,31 @@
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 public class StreamCollect {
     public static Map<Character, List<String>> mapByFirstLetter(Stream<String> s) {
-        // your code here
+        return s
+            .filter(str -> !str.isEmpty())  // optional: skip empty strings
+            .collect(Collectors.groupingBy(
+                str -> Character.toUpperCase(str.charAt(0)),
+                Collectors.toList()
+            ));
     }
 
     public static Map<Integer, Optional<Integer>> getMaxByModulo4(Stream<Integer> s) {
-        // your code here
+        return s
+            .collect(Collectors.groupingBy(
+                n -> n % 4,
+                Collectors.maxBy(Comparator.naturalOrder())
+            ));
     }
 
     public static String orderAndConcatWithSharp(Stream<String> s) {
-        // your code here
+        return s
+            .sorted() // default is lexicographical order
+            .collect(Collectors.joining(" # ", "{", "}"));
     }
 public static void main(String[] args) {
         System.out.println(StreamCollect.mapByFirstLetter(Stream.of("Bonjour", "le", "monde !", "bonsoir")));
