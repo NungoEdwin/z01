@@ -43,6 +43,9 @@ public class FormatDate {
     }
 
      public static String formatIso(LocalTime time) {
+        if(time==null){
+            return null;
+        }
         // Use a builder to append hour, minute, second, and optional fraction
         DateTimeFormatter fmt = new DateTimeFormatterBuilder()
             .appendValue(ChronoField.HOUR_OF_DAY, 2)
