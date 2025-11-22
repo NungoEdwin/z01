@@ -17,10 +17,16 @@ public class FormatDate {
             "'Le' d MMMM 'de l''an' uuuu 'à' HH'h'mm'm et 'ss's'",
             french
         );
+        if(fmt==null){
+            return null;
+        }
         return dateTime.format(fmt);
     }
 
     public static String formatSimple(LocalDate date) {
+        if(date==null){
+            return null;
+        }
         // Italian locale for "febbraio …"
         Locale italian = Locale.ITALIAN;
         // Month name, day-of-month, two-digit year
@@ -28,13 +34,22 @@ public class FormatDate {
             "MMMM d yy",
             italian
         );
+        if(fmt==null){
+            return null;
+        }
         return date.format(fmt);
     }
 
     public static String formatIso(LocalTime time) {
+        if(time==null){
+            return null;
+        }
         // We want hours:minutes:seconds.fractional, with all nano digits
         // Use pattern with 9 S's to include nanoseconds up to full precision
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSSSSS");
+        if(fmt==null){
+            return null;
+        }
         return time.format(fmt);
     }
     public static void main(String[] args) {
