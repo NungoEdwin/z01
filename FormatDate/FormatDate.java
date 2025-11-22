@@ -2,6 +2,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.Locale;
 
 public class FormatDate {
@@ -40,16 +42,21 @@ public class FormatDate {
         return date.format(fmt);
     }
 
-    public static String formatIso(LocalTime time) {
-        if(time==null){
-            return null;
-        }
-        // We want hours:minutes:seconds.fractional, with all nano digits
-        // Use pattern with 9 S's to include nanoseconds up to full precision
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm:ss.SSSSSSSSS");
-        if(fmt==null){
-            return null;
-        }
+     public static String formatIso(LocalTime time) {
+        // Use a builder to append hour, minute, second, and optional fraction
+        DateTimeFormatter fmt = new DateTimeFormatterBuilder()
+            .appendValue(ChronoField.HOUR_OF_DAY, 2)
+            .appendLiteral(':')
+            .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+            .appendLiteral(':')
+            .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+            // appendFraction: field, minWidth, maxWidth, decimalPoint
+            // Use -1 special meaning to avoid trailing zeros
+            .appendFraction(ChronoField.NANO_OF_SECOND, 0, 9, true)
+            .toFormatter();
+            if(fmt==null){
+                return null;
+            }
         return time.format(fmt);
     }
     public static void main(String[] args) {
