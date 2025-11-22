@@ -7,6 +7,9 @@ import java.util.Locale;
 public class FormatDate {
 
     public static String formatToFullText(LocalDateTime dateTime) {
+        if(dateTime==null){
+            return null;
+        }
         // French locale for "Le … août … à …"
         Locale french = Locale.FRENCH;
         // Day number, full month name, year, hour, minute, second
