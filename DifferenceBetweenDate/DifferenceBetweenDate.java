@@ -8,12 +8,12 @@ public class DifferenceBetweenDate {
 
     public static Duration durationBetweenTime(LocalTime time1, LocalTime time2) {
         if (time1 == null && time2 == null) {
-            return Duration.ZERO;
+            return null;
         } else if (time1 == null) {
             // duration from 00:00 to time2
-            return Duration.between(LocalTime.MIDNIGHT, time2).abs();
+            return null;
         } else if (time2 == null) {
-            return Duration.between(LocalTime.MIDNIGHT, time1).abs();
+            return null;
         } else {
             return Duration.between(time1, time2).abs();
         }
@@ -21,11 +21,11 @@ public class DifferenceBetweenDate {
 
     public static Period periodBetweenDate(LocalDate date1, LocalDate date2) {
         if (date1 == null && date2 == null) {
-            return Period.of(0, 0, 0);
+            return null;
         } else if (date1 == null) {
-            return Period.between(LocalDate.MIN, date2).normalized(); // or just Period.between(date2, LocalDate.MIN).negated()
+            return null;
         } else if (date2 == null) {
-            return Period.between(LocalDate.MIN, date1).normalized();
+            return null;
         } else {
             // Period.between(a, b) can return a negative period if b < a. :contentReference[oaicite:0]{index=0}  
             Period p = Period.between(date1, date2);
@@ -40,13 +40,13 @@ public class DifferenceBetweenDate {
 
     public static Long numberOfHoursBetweenDateTime(LocalDateTime dt1, LocalDateTime dt2) {
         if (dt1 == null && dt2 == null) {
-            return 0L;
+            return null;
         } else if (dt1 == null) {
             // from epoch-ish, but better to just compute absolute of between dt2 and now or midnight?
             // Simpler: treat missing dt1 as dt2, so difference = 0 
-            return 0L;
+            return null;
         } else if (dt2 == null) {
-            return 0L;
+            return null;
         } else {
             Duration d = Duration.between(dt1, dt2).abs();
             return d.toHours();
