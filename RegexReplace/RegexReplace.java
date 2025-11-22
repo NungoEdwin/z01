@@ -4,12 +4,12 @@ public class RegexReplace {
 
     public static String removeUnits(String s) {
         if (s == null) return null;
-        // Remove units "cm" or "€" only when they immediately follow a number and are followed by a space
+        // Remove units "cm" or "€" only when they immediately follow a number
         // Regex explanation:
         //   (?<=\\d) → positive lookbehind, ensures preceding character is a digit
         //   (?:cm|€) → either "cm" or "€"
         //   (?=\\s) → positive lookahead, ensures the unit is followed by a space
-        return s.replaceAll("(?<=\\d)(?:cm|€)(?=\\s)", "");
+        return s.replaceAll("(?<=\\d)(?:cm|€)(?=\\s|$)", "");
     }
 
     public static String obfuscateEmail(String s) {
