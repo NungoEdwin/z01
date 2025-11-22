@@ -12,52 +12,51 @@ public class RegexReplace {
     public static String obfuscateEmail(String s) {
         if (s == null) return null;
 
-        int at = s.indexOf('@');
-        if (at < 1) {
+        int atIndex = s.indexOf('@');
+        if (atIndex < 1) {
             return s;
         }
 
-        String username = s.substring(0, at);
-        String domain = s.substring(at + 1);
+        String username = s.substring(0, atIndex);
+        String domain = s.substring(atIndex + 1);
 
+        // 1) Obfuscate username
         String obfUser;
-
-        // Case 1: username contains separator . _ or -
         if (username.matches(".*[._-].*")) {
+            // If there is a separator (., _, -), keep up to it then add ***
             Pattern p = Pattern.compile("^([^._-]+)([._-]).*");
             Matcher m = p.matcher(username);
             obfUser = m.replaceAll((MatchResult mr) -> {
                 return mr.group(1) + mr.group(2) + "***";
             });
         } else {
-            // No separator in username
+            // No separator
             int len = username.length();
             if (len <= 3) {
-                // Mask all if <= 3 chars
                 obfUser = username.replaceAll(".", "*");
             } else {
-                // If longer than 3, keep first 3 characters, then mask the rest
+                // Keep first 3 chars, mask the rest
                 Pattern p = Pattern.compile("^(.{3})(.*)$");
                 Matcher m2 = p.matcher(username);
                 obfUser = m2.replaceAll((MatchResult mr) -> {
                     String first3 = mr.group(1);
-                    // Replace the rest with stars, same length as the rest
                     String rest = mr.group(2);
-                    StringBuilder stars = new StringBuilder();
+                    StringBuilder sb = new StringBuilder();
                     for (int i = 0; i < rest.length(); i++) {
-                        stars.append("*");
+                        sb.append("*");
                     }
-                    return first3 + stars;
+                    return first3 + sb;
                 });
             }
         }
 
-        // Obfuscate domain
+        // 2) Obfuscate domain
         String[] parts = domain.split("\\.");
         String obfDomain;
         if (parts.length == 3) {
             // third-level.second-level.top-level
-            obfDomain = "******" + "." + parts[1] + "." + "***";
+            // Use 7 stars for the first subdomain
+            obfDomain = "*******" + "." + parts[1] + "." + "***";
         } else if (parts.length == 2) {
             String tld = parts[1];
             if ("com".equals(tld) || "org".equals(tld) || "net".equals(tld)) {
@@ -66,6 +65,7 @@ public class RegexReplace {
                 obfDomain = "*******." + "**";
             }
         } else {
+            // fallback
             obfDomain = "*******";
         }
 
@@ -73,12 +73,14 @@ public class RegexReplace {
     }
 
     public static void main(String[] args) {
-        System.out.println(removeUnits("32cm et 50€"));       // → "32 et 50"
-        System.out.println(removeUnits("32 cm et 50 €"));    // → "32 cm et 50 €"
-        System.out.println(removeUnits("32cms et 50€!"));    // → "32cms et 50€!"
+        // Test removeUnits
+        System.out.println(removeUnits("32cm et 50€"));       // -> "32 et 50"
+        System.out.println(removeUnits("32 cm et 50 €"));    // -> "32 cm et 50 €"
+        System.out.println(removeUnits("32cms et 50€!"));    // -> "32cms et 50€!"
 
-        System.out.println(obfuscateEmail("john.doe@example.com"));   // → "john.***@*******.com"
-        System.out.println(obfuscateEmail("jann@example.co.org"));    // → "jan*@*******.co.***"
-        System.out.println(obfuscateEmail("jackob@example.fr"));      // → "jac***@*******.**"
+        // Test obfuscateEmail
+        System.out.println(obfuscateEmail("john.doe@example.com"));      // expected: john.***@*******.com
+        System.out.println(obfuscateEmail("jann@example.co.edu"));      // expected: jan*@*******.co.***
+        System.out.println(obfuscateEmail("jackob@example.fr"));         // expected: jac***@*******.**
     }
 }
