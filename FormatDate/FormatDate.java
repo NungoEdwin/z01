@@ -16,7 +16,7 @@ public class FormatDate {
         Locale french = Locale.FRENCH;
         // Day number, full month name, year, hour, minute, second
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern(
-            "'Le' d MMMM 'de l''an' uuuu 'à' HH'h'mm'm et 'ss's'",
+            "'Le' d MMM 'de l''an' uuuu 'à' HH'h'mm'm et 'ss's'",
             french
         );
         if(fmt==null){
