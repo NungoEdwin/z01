@@ -1,0 +1,17 @@
+import java.util.List;
+public class ListEquals{
+public static boolean areListsEqual(List<String> list1,List<String> list2){
+
+if(list1==null&&list2==null){
+return true;
+}else if((list1==null|| list2==null) && (list1!=null||list2!=null)){
+return false;
+}
+return list1.equals(list2);
+
+}
+public static void main(String[] args) {
+        System.out.println(ListEquals.areListsEqual(List.of("Alice", "Bob", "Charly", "Emily"), List.of("Alice", "Bob", "Charly", "Emily")));
+        System.out.println(ListEquals.areListsEqual(List.of("Alice", "Bob", "Charly", "Emily"), List.of("Alice", "Bob", "Emily", "Charly")));
+    }
+}
