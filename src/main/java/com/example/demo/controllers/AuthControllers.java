@@ -20,8 +20,8 @@ public class AuthControllers {
     @Autowired
     ProductService productService;
     @PostMapping("/products")
-    public List<Product> CreateProduct(){
-    return productService.getAll();
+    public void CreateProduct(@RequestBody Product entity){
+     productService.createProduct(entity);
     }
     @PutMapping("/products/{id}")
     public Product UpdateProduct(@RequestBody Product entity,@PathVariable String id){
