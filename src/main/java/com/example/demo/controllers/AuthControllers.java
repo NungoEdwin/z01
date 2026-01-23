@@ -31,7 +31,7 @@ public class AuthControllers {
          productService.deleteProduct(id);
     }
     @GetMapping("/products/{id}")
-    public Optional<Product> GetProduct(@PathVariable String id){
+    public Product GetProduct(@PathVariable String id){
         return productService.getProduct(id);
     }
     

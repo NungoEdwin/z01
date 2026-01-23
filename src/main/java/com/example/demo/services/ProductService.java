@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.models.Product;
 import com.example.demo.repositories.ProductRepo;
@@ -16,8 +18,8 @@ public class ProductService {
     public List<Product> getAll(){
         return repository.findAll();
     }
-    public Optional<Product> getProduct(String id){
-        return repository.findById(id);
+    public Product getProduct(String id){
+        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
     }
     public void deleteProduct(String id){
        Optional<Product> pd=repository.findById(id);// Product pd = repository.findById(id)
