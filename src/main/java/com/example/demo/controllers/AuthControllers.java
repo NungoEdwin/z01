@@ -24,17 +24,17 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class AuthControllers {
     @Autowired
     ProductService productService;
     private final AuthenticationManager authManager;
     private final JwtUtil jwtService;
 
-    // public AuthController(AuthenticationManager authManager, JwtUtil jwtService) {
-    //     this.authManager = authManager;
-    //     this.jwtService = jwtService;
-    // }
+    public AuthControllers(AuthenticationManager authManager, JwtUtil jwtService) {
+        this.authManager = authManager;
+        this.jwtService = jwtService;
+    }
      @PostMapping("/login")
     public String login(@RequestBody AuthRequest request) {
 
