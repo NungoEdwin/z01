@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.models.Product;
 import com.example.demo.repositories.ProductRepo;
 
@@ -19,7 +20,7 @@ public class ProductService {
         return repository.findAll();
     }
     public Product getProduct(String id){
-        return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
+        return repository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
     public void deleteProduct(String id){
        Optional<Product> pd=repository.findById(id);// Product pd = repository.findById(id)

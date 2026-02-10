@@ -1,5 +1,7 @@
 package com.example.demo.exception;
 
+import java.net.URI;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,17 @@ public class GlobalExceptionHandler {
     //     pd.setDetail(ex.getMessage());
     //     return pd;
     // }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ProblemDetail handleProductNotFound(ProductNotFoundException ex){
+        ProblemDetail problem= ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        problem.setTitle("Not Found");
+        problem.setDetail(ex.getMessage());
+        //url to explaining the problem or documentation to it
+        problem.setType(URI.create("/uel/not-found"));
+        problem.setProperty("errorCode", "PRODUCT_NOT_FOUND");
+
+        return problem;
+    }
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleBadRequest(
             IllegalArgumentException ex,
