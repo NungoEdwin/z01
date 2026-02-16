@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.security.JwtUtil;
 import com.example.demo.services.ProductService;
 
-import lombok.RequiredArgsConstructor;
+//import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")

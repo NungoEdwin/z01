@@ -35,7 +35,7 @@ public class ProductService {
     }
     public Product update(Product updatedProduct,String id){
 
-        Product product = repository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Not existent"));
+        Product product = repository.findById(id).orElseThrow(()-> new ProductNotFoundException(id));
         if (product!=null){
             product.setName(updatedProduct.getName());
             product.setPrice(updatedProduct.getPrice());

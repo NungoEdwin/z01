@@ -13,15 +13,15 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 public class ApiErrorController implements ErrorController {
     
-    @RequestMapping("/error")
-    public ProblemDetail handleError(HttpServletRequest request){
-         int status = (int) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+    // @RequestMapping("/error")
+    // public ProblemDetail handleError(HttpServletRequest request){
+    //      int status = (int) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-        ProblemDetail problem = ProblemDetail.forStatus(status);
-        problem.setTitle(HttpStatus.valueOf(status).getReasonPhrase());
-        problem.setDetail("Endpoint does not exist or method not allowed");
-        problem.setInstance(URI.create(request.getRequestURI()));
+    //     ProblemDetail problem = ProblemDetail.forStatus(status);
+    //     problem.setTitle(HttpStatus.valueOf(status).getReasonPhrase());
+    //     problem.setDetail("Endpoint does not exist or method not allowed");
+    //     problem.setInstance(URI.create(request.getRequestURI()));
 
-        return problem;
-    }
+    //     return problem;
+    // }
 }

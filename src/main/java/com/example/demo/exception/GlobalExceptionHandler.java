@@ -13,24 +13,13 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-  
+  //just illustraring 2 approaches but with ProblemDetail being the recommended new way to approach this
     // @ExceptionHandler(IllegalArgumentException.class)
     // public ProblemDetail handleBadRequest(IllegalArgumentException ex) {
     //     ProblemDetail pd = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
     //     pd.setDetail(ex.getMessage());
     //     return pd;
     // }
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ProblemDetail handleProductNotFound(ProductNotFoundException ex){
-        ProblemDetail problem= ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
-        problem.setTitle("Not Found");
-        problem.setDetail(ex.getMessage());
-        //url to explaining the problem or documentation to it
-        problem.setType(URI.create("/uel/not-found"));
-        problem.setProperty("errorCode", "PRODUCT_NOT_FOUND");
-
-        return problem;
-    }
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleBadRequest(
             IllegalArgumentException ex,
@@ -41,6 +30,17 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+    }
+     @ExceptionHandler(ProductNotFoundException.class)
+    public ProblemDetail handleProductNotFound(ProductNotFoundException ex){
+        ProblemDetail problem= ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        problem.setTitle("Not Found");
+        problem.setDetail(ex.getMessage());
+        //url to explaining the problem or documentation to it
+        problem.setType(URI.create("/uel/not-found"));
+        problem.setProperty("errorCode", "PRODUCT_NOT_FOUND");
+
+        return problem;
     }
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<ApiError> handleUserNotFound(
