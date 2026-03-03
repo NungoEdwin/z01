@@ -1,0 +1,24 @@
+<div class="captcha-box">
+  <h3>Challenge {{ service.currentStage() + 1 }} of {{ service.challenges().length }}</h3>
+  <p class="question">{{ currentChallenge.question }}</p>
+
+  <!-- Type: Math or Text -->
+  <div *ngIf="currentChallenge.type !== 'image'">
+    <input type="text" [(ngModel)]="textInput" placeholder="Enter answer..." class="main-input">
+  </div>
+
+  <!-- Type: Image Grid -->
+  <div *ngIf="currentChallenge.type === 'image'" class="grid">
+    <div *ngFor="let opt of currentChallenge.options; let i = index" 
+         (click)="toggleImage(i)"
+         [class.active]="selectedImages().includes(i)"
+         class="tile">
+      {{ opt }}
+    </div>
+  </div>
+
+  <div class="footer">
+    <button (click)="back()" [disabled]="service.currentStage() === 0">Back</button>
+    <button (click)="next()" [disabled]="!isValid()" class="primary">Verify & Next</button>
+  </div>
+</div>
