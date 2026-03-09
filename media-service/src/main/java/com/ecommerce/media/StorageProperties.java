@@ -1,4 +1,4 @@
-package com.ecommerce.media.config;
+package com.ecommerce.media;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -1,6 +1,6 @@
 package com.ecommerce.media.service;
 
-import com.ecommerce.media.config.StorageProperties;
+import com.ecommerce.media.StorageProperties;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
