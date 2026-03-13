@@ -1,0 +1,38 @@
+# Compiled class files
+*.class
+target/
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Node modules
+node_modules/
+dist/
+npm-debug.log*
+
+# Environment files
+.env
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# Build files
+build/
+out/
+
+# Test coverage
+coverage/
+*.lcov
+
+# SonarQube
+.sonar/
+.scannerwork/
+.angular/
