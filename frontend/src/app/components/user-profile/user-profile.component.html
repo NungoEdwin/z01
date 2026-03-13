@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>User Profile</h1>
+
+  <div class="stats-card">
+    <h2>Shopping Statistics</h2>
+    <div class="stat-item">
+      <span class="label">Total Spent:</span>
+      <span class="value">${{ stats.totalSpent?.toFixed(2) || 0 }}</span>
+    </div>
+
+    <h3>Most Purchased Products</h3>
+    <div class="product-list">
+      <div *ngFor="let product of stats.mostBuyingProducts" class="product-item">
+        <span>Product ID: {{ product.productId }}</span>
+        <span>Quantity: {{ product.count }}</span>
+      </div>
+    </div>
+
+    <h3>Best Products</h3>
+    <div class="product-list">
+      <div *ngFor="let product of stats.bestProducts" class="product-item">
+        <span>Product ID: {{ product.productId }}</span>
+        <span>Quantity: {{ product.count }}</span>
+      </div>
+    </div>
+  </div>
+</div>
