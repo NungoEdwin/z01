@@ -1,0 +1,12 @@
+package com.nexus.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class NexusWebApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+}
