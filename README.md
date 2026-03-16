@@ -337,3 +337,4 @@ MIT License
 ## Authors
 
 Neo4flix Development Team
+NungoEdwin(GitHub)
