@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Checkout</h1>
+
+  <div class="checkout-form">
+    <h2>Shipping Information</h2>
+    <textarea [(ngModel)]="shippingAddress" placeholder="Enter your shipping address" rows="4"></textarea>
+
+    <h2>Payment Method</h2>
+    <select [(ngModel)]="paymentMethod">
+      <option value="PAY_ON_DELIVERY">Pay on Delivery</option>
+      <option value="CREDIT_CARD">Credit Card</option>
+      <option value="PAYPAL">PayPal</option>
+    </select>
+
+    <h2>Order Summary</h2>
+    <div class="order-items">
+      <div *ngFor="let item of cart?.items" class="order-item">
+        <div *ngIf="cartProducts.get(item.productId) as product">
+          <span>{{ product.name }} x {{ item.quantity }}</span>
+          <span>${{ product.price * item.quantity }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="total">
+      <h3>Total: ${{ totalAmount.toFixed(2) }}</h3>
+    </div>
+
+    <button (click)="placeOrder()">Place Order</button>
+  </div>
+</div>

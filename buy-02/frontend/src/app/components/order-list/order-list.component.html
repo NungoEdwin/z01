@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>My Orders</h1>
+
+  <div class="search-bar">
+    <select [(ngModel)]="searchStatus" (change)="searchOrders()">
+      <option value="">All Statuses</option>
+      <option value="PENDING">Pending</option>
+      <option value="CONFIRMED">Confirmed</option>
+      <option value="SHIPPED">Shipped</option>
+      <option value="DELIVERED">Delivered</option>
+      <option value="CANCELLED">Cancelled</option>
+    </select>
+  </div>
+
+  <div class="orders-list">
+    <div class="order-card" *ngFor="let order of orders">
+      <div class="order-header">
+        <h3>Order #{{ order.id }}</h3>
+        <span class="status" [class]="order.status.toLowerCase()">{{ order.status }}</span>
+      </div>
+      <p>Date: {{ order.createdAt | date }}</p>
+      <p>Total: ${{ order.totalAmount }}</p>
+      <p>Payment: {{ order.paymentMethod }}</p>
+      <p>Address: {{ order.shippingAddress }}</p>
+      
+      <div class="order-actions">
+        <button *ngIf="order.status === 'PENDING'" (click)="cancelOrder(order.id)" class="cancel-btn">Cancel</button>
+        <button (click)="deleteOrder(order.id)" class="delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

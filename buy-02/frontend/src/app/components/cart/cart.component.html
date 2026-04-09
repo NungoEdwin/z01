@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Shopping Cart</h1>
+  
+  <div *ngIf="!cart || cart.items.length === 0" class="empty-cart">
+    <p>Your cart is empty</p>
+    <button routerLink="/products">Continue Shopping</button>
+  </div>
+
+  <div *ngIf="cart && cart.items.length > 0">
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of cart.items">
+        <div *ngIf="cartProducts.get(item.productId) as product">
+          <img [src]="product.imageUrl || 'assets/placeholder.png'" [alt]="product.name">
+          <div class="item-details">
+            <h3>{{ product.name }}</h3>
+            <p class="price">${{ product.price }}</p>
+            <div class="quantity-control">
+              <button (click)="updateQuantity(item.productId, item.quantity - 1)">-</button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="updateQuantity(item.productId, item.quantity + 1)">+</button>
+            </div>
+            <p class="subtotal">Subtotal: ${{ product.price * item.quantity }}</p>
+          </div>
+          <button class="remove-btn" (click)="removeItem(item.productId)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <h2>Order Summary</h2>
+      <p>Total: ${{ totalAmount.toFixed(2) }}</p>
+      <button (click)="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
